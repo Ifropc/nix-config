@@ -27,7 +27,11 @@ in {
 
     htop libnotify
 
-    firefox-wayland thunderbird
+    firefox-wayland 
+
+    chromium 
+
+    thunderbird
   
     jdk11 maven gradle
 
@@ -39,8 +43,8 @@ in {
 
     neovim     
 
-    wayland sway swaylock swayidle alacritty mako 
-    
+    wayland sway wlr-randr swaylock swayidle alacritty mako
+
     pipewire wireplumber pavucontrol
   
     spotify
@@ -138,4 +142,6 @@ in {
       "IPAPMincho"
     ];
   };
+
+  nixpkgs.config.chromium.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
 }
