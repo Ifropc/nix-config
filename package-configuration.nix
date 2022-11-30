@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, monitorcontrol, ... }:
 
 let
   jcef = import
@@ -17,7 +17,9 @@ in {
 	     "slack"
 	     "spotify-unwrapped"
 	     "spotify"
-           ];
+   ];
+
+   nixpkgs.overlays = [ monitorcontrol.overlays.default ];
 
   environment.systemPackages = with pkgs; [
     # Basic tools
@@ -50,6 +52,10 @@ in {
     spotify
 
     lorri direnv niv lldb 
+
+    speedtest-cli
+
+    monitorcontrol
   ];
 
   services.keybase.enable = true;
