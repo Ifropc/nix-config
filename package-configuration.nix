@@ -6,7 +6,7 @@
 
 let
   jcef = import
-    (builtins.fetchTarball https://github.com/GenericNerdyUsername/nixpkgs/tarball/jetbrains-jcef)
+    (builtins.fetchTarball https://github.com/GenericNerdyUsername/nixpkgs/tarball/fcb6648102a7df48d71c7aa5dfd31673934a1eac)
     # reuse the current configuration
     { config = config.nixpkgs.config; };
 in {
@@ -21,8 +21,8 @@ in {
 
   environment.systemPackages = with pkgs; [
     # Basic tools
-    wget git zsh ncdu killall gnupg
-
+    wget git zsh ncdu killall gnupg inetutils
+ 
     zip unzip
 
     htop libnotify
@@ -34,6 +34,8 @@ in {
     thunderbird
   
     jdk11 maven gradle
+
+    nodejs yarn 
 
     slack openvpn jcef.jetbrains.idea-community jetbrains.clion 
 
@@ -50,12 +52,36 @@ in {
     spotify
 
     lorri direnv niv lldb 
+  
+    sshuttle
+
+    # TODO: check if can be removed later. Is needed for sodium
+    libtool libsodium autoconf269 autoconf automake autogen gnumake gettext python311 
   ];
 
   services.keybase.enable = true;
   services.kbfs.enable = true;
 
-  programs.sway = { enable = true; };
+  programs.sway = { 
+    enable = true; 
+   
+    extraPackages = with pkgs; [
+      flameshot
+      dmenu
+    ];
+ 
+    extraSessionCommands = ''
+      export MOZ_ENABLE_WAYLAND=1
+      export MOZ_USE_XINPUT2=1
+      export XDG_SESSION_TYPE=wayland
+      export XDG_CURRENT_DESKTOP=sway
+      export SDL_VIDEODRIVER=wayland
+      export _JAVA_AWT_WM_NONREPARENTING=1
+      export QT_QPA_PLATFORM=wayland
+      export XDG_SESSION_DESKTOP=sway
+      export SDL_VIDEODRIVER=wayland
+    '';
+  };
   
   programs.neovim = {
      enable = true;
