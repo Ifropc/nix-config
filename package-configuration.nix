@@ -54,9 +54,6 @@ in {
     lorri direnv niv lldb 
   
     sshuttle
-
-    # TODO: check if can be removed later. Is needed for sodium
-    libtool libsodium autoconf269 autoconf automake autogen gnumake gettext python311 
   ];
 
   services.keybase.enable = true;
