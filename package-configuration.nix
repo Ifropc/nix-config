@@ -5,8 +5,9 @@
 { config, pkgs, lib, ... }:
 
 let
+  unstable = import <nixos-unstable> {} ;
   jcef = import
-    (builtins.fetchTarball https://github.com/GenericNerdyUsername/nixpkgs/tarball/fcb6648102a7df48d71c7aa5dfd31673934a1eac)
+    (builtins.fetchTarball https://github.com/GenericNerdyUsername/nixpkgs/tarball/6f0a18633d59a73c90d29446e1f85e4f1a233e86)
     # reuse the current configuration
     { config = config.nixpkgs.config; };
 in {
@@ -17,6 +18,7 @@ in {
 	     "slack"
 	     "spotify-unwrapped"
 	     "spotify"
+	     "vscode"
            ];
 
   environment.systemPackages = with pkgs; [
@@ -37,7 +39,7 @@ in {
 
     nodejs yarn 
 
-    slack openvpn jcef.jetbrains.idea-community jetbrains.clion 
+    slack openvpn jcef.jetbrains.idea-community jetbrains.clion vscode 
 
     keybase kbfs keybase-gui 
 
@@ -77,6 +79,7 @@ in {
       export QT_QPA_PLATFORM=wayland
       export XDG_SESSION_DESKTOP=sway
       export SDL_VIDEODRIVER=wayland
+      export NIXOS_OZONE_WL=1
     '';
   };
   
