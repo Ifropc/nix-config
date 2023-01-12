@@ -7,7 +7,7 @@
 let
   unstable = import <nixos-unstable> {} ;
   jcef = import
-    (builtins.fetchTarball https://github.com/GenericNerdyUsername/nixpkgs/tarball/6f0a18633d59a73c90d29446e1f85e4f1a233e86)
+    (builtins.fetchTarball https://github.com/GenericNerdyUsername/nixpkgs/tarball/d2231fc94faf42ba057f4c8d210d95fae65d073c)
     # reuse the current configuration
     { config = config.nixpkgs.config; };
 in {
@@ -39,7 +39,7 @@ in {
 
     nodejs yarn 
 
-    slack openvpn jcef.jetbrains.idea-community jetbrains.clion vscode 
+    slack openvpn jcef.jetbrains.idea-ultimate jcef.jetbrains.idea-community vscode 
 
     keybase kbfs keybase-gui 
 
