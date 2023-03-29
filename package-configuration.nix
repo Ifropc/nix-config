@@ -5,7 +5,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  unstable = import <nixos-unstable> {} ;
+  unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
 
     # bash script to let dbus know about important env variables and
   # propagate them to relevent services run at the end of sway config
@@ -24,11 +24,6 @@ let
   systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
       '';
   };
-
-  jcef = import
-    (builtins.fetchTarball https://github.com/GenericNerdyUsername/nixpkgs/tarball/d2231fc94faf42ba057f4c8d210d95fae65d073c)
-    # reuse the current configuration
-    { config = config.nixpkgs.config; };
 in {
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
              "idea-ultimate"
@@ -38,6 +33,7 @@ in {
 	     "spotify-unwrapped"
 	     "spotify"
 	     "vscode"
+	     "discord"
            ];
 
   environment.systemPackages = with pkgs; [
@@ -56,9 +52,11 @@ in {
   
     jdk11 maven gradle
 
-    nodejs yarn 
+    nodejs yarn python3 
 
-    slack openvpn jcef.jetbrains.idea-ultimate jcef.jetbrains.idea-community vscode 
+    gcc
+
+    slack openvpn unstable.jetbrains.idea-ultimate jetbrains.clion vscode 
 
     keybase kbfs keybase-gui 
 
@@ -75,6 +73,10 @@ in {
     lorri direnv niv lldb 
   
     sshuttle
+
+    discord
+  
+    nix-index nix-ld
   ];
 
   services.keybase.enable = true;
@@ -115,6 +117,8 @@ in {
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
+
+  programs.nix-ld.enable = true;
 
   #services.mysql.enable = true;
   #services.mysql.package = pkgs.mariadb;
