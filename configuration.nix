@@ -53,6 +53,8 @@
   environment.sessionVariables = rec {
      _JAVA_AWT_WM_NONREPARENTING = "1";
      MOZ_ENABLE_WAYLAND = "1";
+     DOCKER_COMPOSE_LOCATION = "/run/current-system/sw/bin/docker-compose";
+     DOCKER_LOCATION = "/run/current-system/sw/bin/docker";
   };
 
   # auto-login
