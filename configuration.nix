@@ -102,6 +102,14 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+  networking.extraHosts =
+  ''
+    127.0.0.1 db
+    127.0.0.1 zookeeper
+    127.0.0.1 kafka
+    127.0.0.1 reference-server
+    127.0.0.1 platform
+  '';
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -124,4 +132,5 @@
 
   boot.kernelPackages = pkgs.linuxPackages_6_2;
 }
+
 
