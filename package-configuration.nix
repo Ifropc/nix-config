@@ -77,6 +77,8 @@ in {
     discord
   
     nix-index nix-ld
+
+    kubectl
   ];
 
   services.keybase.enable = true;
