@@ -79,6 +79,8 @@ in {
     nix-index nix-ld
 
     kubectl
+  
+    ranger ueberzugpp mcomix mpv
   ];
 
   services.keybase.enable = true;
