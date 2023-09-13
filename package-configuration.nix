@@ -56,7 +56,7 @@ in {
 
     gcc
 
-    slack openvpn unstable.jetbrains.idea-ultimate jetbrains.clion vscode 
+    slack openvpn jetbrains.idea-ultimate jetbrains.clion vscode 
 
     keybase kbfs keybase-gui 
 
@@ -64,7 +64,7 @@ in {
 
     neovim     
 
-    wayland sway wlr-randr swaylock swayidle alacritty mako xdg-utils dbus-sway-environment
+    wayland sway wlr-randr swaylock swayidle alacritty mako xdg-utils dbus-sway-environment wl-clipboard
 
     pipewire wireplumber pavucontrol
   
