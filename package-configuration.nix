@@ -52,7 +52,7 @@ in {
   
     jdk11 maven gradle
 
-    nodejs yarn python3 
+    nodejs yarn python3 dart flutter
 
     gcc
 
@@ -80,7 +80,7 @@ in {
 
     kubectl
   
-    ranger ueberzugpp mcomix mpv
+    ranger ueberzugpp mcomix mpv memento
   ];
 
   services.keybase.enable = true;
@@ -151,7 +151,7 @@ in {
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
