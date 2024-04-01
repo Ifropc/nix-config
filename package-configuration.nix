@@ -79,6 +79,8 @@ in {
     nix-index nix-ld
 
     kubectl
+
+    openssl
   
     ranger ueberzugpp mcomix mpv memento
   ];

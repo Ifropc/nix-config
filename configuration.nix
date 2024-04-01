@@ -111,6 +111,7 @@
     127.0.0.1 reference-server
     127.0.0.1 platform
     127.0.0.1 reference-db 
+    127.0.0.1 wallet-server 
   '';
 
   # Open ports in the firewall.
