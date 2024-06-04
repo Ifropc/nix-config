@@ -34,7 +34,7 @@ in {
 	     "spotify"
 	     "vscode"
 	     "discord"
-           ];
+	];
 
   environment.systemPackages = with pkgs; [
     # Basic tools
@@ -44,7 +44,7 @@ in {
 
     htop libnotify
 
-    firefox-wayland 
+    firefox-wayland librewolf
 
     chromium 
 
@@ -82,7 +82,9 @@ in {
 
     openssl
   
-    ranger ueberzugpp mcomix mpv memento
+    ranger ueberzugpp mcomix mpv memento 
+
+    speedtest-cli
   ];
 
   services.keybase.enable = true;
