@@ -29,6 +29,7 @@ in {
              "idea-ultimate"
              "idea-community"
 	     "clion"
+	     "rust-rover"
 	     "slack"
 	     "spotify-unwrapped"
 	     "spotify"
@@ -50,13 +51,13 @@ in {
 
     thunderbird
   
-    jdk11 maven gradle
+    jdk17 maven gradle
 
     nodejs yarn python3 dart flutter
 
     gcc
 
-    slack openvpn jetbrains.idea-ultimate jetbrains.clion vscode 
+    slack openvpn jetbrains.idea-ultimate jetbrains.clion vscode jetbrains.rust-rover 
 
     keybase kbfs keybase-gui 
 
@@ -82,7 +83,7 @@ in {
 
     openssl
   
-    ranger ueberzugpp mcomix mpv memento 
+    ranger ueberzugpp mcomix mpv memento neofetch 
 
     speedtest-cli
   ];
@@ -121,7 +122,7 @@ in {
   programs.gnupg.agent.enable = true;
 
   programs.java.enable = true;
-  programs.java.package = pkgs.jdk11;
+  programs.java.package = pkgs.jdk17;
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
