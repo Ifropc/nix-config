@@ -86,6 +86,8 @@ in {
     ranger ueberzugpp mcomix mpv memento neofetch 
 
     speedtest-cli
+ 
+    nixVersions.nix_2_20
   ];
 
   services.keybase.enable = true;
