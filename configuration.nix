@@ -25,8 +25,8 @@
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  # time.timeZone = "America/New_York";
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "America/New_York";
+  #time.timeZone = "America/Los_Angeles";
 
 
 # Edit this configuration file to define what should be installed on

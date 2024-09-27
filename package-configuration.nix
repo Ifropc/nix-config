@@ -6,6 +6,11 @@
 
 let
   unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
+  
+  term_older = import
+    (builtins.fetchTarball https://github.com/NixOS/nixpkgs/tarball/44dbbcea48ff4fd6337a8376519ebc4219927229)
+    # reuse the current configuration
+    { config = config.nixpkgs.config; };
 
     # bash script to let dbus know about important env variables and
   # propagate them to relevent services run at the end of sway config
@@ -65,7 +70,10 @@ in {
 
     neovim     
 
-    wayland sway wlr-randr swaylock swayidle alacritty mako xdg-utils dbus-sway-environment wl-clipboard
+    wayland sway wlr-randr swaylock swayidle mako xdg-utils dbus-sway-environment wl-clipboard
+
+    # https://github.com/alacritty/alacritty/issues/8050
+    term_older.alacritty
 
     pipewire wireplumber pavucontrol
   
@@ -157,33 +165,43 @@ in {
       # gtk portal needed to make gtk apps happy
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
+  
+  fonts = {
+    enableDefaultPackages = true;
+    
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      liberation_ttf
+      fira-code
+      fira-code-symbols
+      dina-font
+      proggyfonts
+      ipafont
+    ];
 
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    dina-font
-    proggyfonts
-    ipafont
-  ];
-
-  fonts.fontconfig.defaultFonts = {
-    monospace = [
-      "DejaVu Sans Mono"
-      "IPAGothic"
-    ];
-    sansSerif = [
-      "DejaVu Sans"
-      "IPAPGothic"
-    ];
-    serif = [
-      "DejaVu Serif"
-      "IPAPMincho"
-    ];
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        emoji = [
+          "Noto Color Emoji"
+        ];
+        monospace = [
+          "DejaVu Sans Mono"
+          "IPAGothic"
+        ];
+        sansSerif = [
+          "DejaVu Sans"
+          "IPAPGothic"
+        ];
+        serif = [
+          "DejaVu Serif"
+          "IPAPMincho"
+        ];
+      };
+    };
   };
-
+    
   nixpkgs.config.chromium.commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
 }
