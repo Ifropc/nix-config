@@ -7,11 +7,6 @@
 let
   unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
   
-  term_older = import
-    (builtins.fetchTarball https://github.com/NixOS/nixpkgs/tarball/44dbbcea48ff4fd6337a8376519ebc4219927229)
-    # reuse the current configuration
-    { config = config.nixpkgs.config; };
-
     # bash script to let dbus know about important env variables and
   # propagate them to relevent services run at the end of sway config
   # see
@@ -72,8 +67,7 @@ in {
 
     wayland sway wlr-randr swaylock swayidle mako xdg-utils dbus-sway-environment wl-clipboard
 
-    # https://github.com/alacritty/alacritty/issues/8050
-    term_older.alacritty
+    alacritty
 
     pipewire wireplumber pavucontrol
   
@@ -171,7 +165,7 @@ in {
     
     packages = with pkgs; [
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       liberation_ttf
       fira-code
