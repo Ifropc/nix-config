@@ -57,7 +57,7 @@ in {
 
     gcc
 
-    slack openvpn jetbrains.idea-ultimate jetbrains.clion vscode jetbrains.rust-rover 
+    slack openvpn jetbrains.idea-community jetbrains.clion vscode jetbrains.rust-rover 
 
     keybase kbfs keybase-gui 
 
