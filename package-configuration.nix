@@ -53,11 +53,11 @@ in {
   
     jdk17 maven gradle
 
-    nodejs yarn python3 dart flutter
+    nodejs yarn python3 
 
     gcc
 
-    slack openvpn jetbrains.idea-community jetbrains.clion vscode jetbrains.rust-rover 
+    slack openvpn jetbrains.idea-community jetbrains.rust-rover 
 
     keybase kbfs keybase-gui 
 
@@ -81,11 +81,9 @@ in {
   
     nix-index nix-ld
 
-    kubectl
-
     openssl
   
-    ranger ueberzugpp mcomix mpv memento neofetch 
+    ranger ueberzugpp mcomix mpv neofetch 
 
     speedtest-cli
  
@@ -133,9 +131,6 @@ in {
 
   programs.nix-ld.enable = true;
 
-  #services.mysql.enable = true;
-  #services.mysql.package = pkgs.mariadb;
- 
   virtualisation.docker.enable = true;
 
   nix.extraOptions = ''experimental-features = nix-command flakes'';
