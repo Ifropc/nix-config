@@ -21,9 +21,9 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
-  networking.wireless.iwd.enable = true; 
+ # networking.wireless.iwd.enable = true; 
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  networking.networkmanager.wifi.backend = "iwd"; 
+ # networking.networkmanager.wifi.backend = "iwd"; 
 
   # Set your time zone.
   #time.timeZone = "America/New_York";
